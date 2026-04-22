@@ -19,7 +19,7 @@ public class LevititeOreSpawnerBlockEntity extends BlockEntity {
     private int tickDelay = 1;
 
     public LevititeOreSpawnerBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.LEVITITE_SPAWNER.get(), pos, state);
+        super(ModBlockEntities.LEVITITE_ORE_SPAWNER.get(), pos, state);
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state,

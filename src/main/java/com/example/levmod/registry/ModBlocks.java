@@ -23,8 +23,8 @@ public class ModBlocks {
             BLOCKS.register("levitite_spawner", LevititeSpawnerBlock::new);
 
     public static final DeferredBlock<LevititeOreSpawnerBlock> LEVITITE_ORE_SPAWNER =
-            BLOCKS.register("levitite_ore_spawner", LevititeOreSpawnerBlock::new);}
+            BLOCKS.register("levitite_ore_spawner", LevititeOreSpawnerBlock::new);
+}
 
-    // ── Items ─────────────────────────────────────────────────────────────────
 
 

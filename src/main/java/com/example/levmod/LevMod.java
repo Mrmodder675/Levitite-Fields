@@ -34,13 +34,13 @@ public class LevMod {
         // Biome placement — no TerraBlender region class needed
         BiomePlacement.addOverworld(LEVITITE_FIELDS,
                 new Climate.ParameterPoint(
-                        Climate.Parameter.span(0.1f, 0.3f),   // temperature
-                        Climate.Parameter.span(-0.3f, 0.0f),  // humidity
-                        Climate.Parameter.span(0.3f, 1.0f),   // continentalness
-                        Climate.Parameter.span(-0.2f, 0.2f),  // erosion
-                        Climate.Parameter.point(0.0f),         // depth (surface)
-                        Climate.Parameter.span(0.4f, 1.0f),   // weirdness
-                        0L                                     // offset
+                        Climate.Parameter.span(0.15f, 0.25f),  // temperature  — narrow, rare trigger
+                        Climate.Parameter.span(-0.2f, -0.05f), // humidity     — narrow, rare trigger
+                        Climate.Parameter.span(-0.5f, 1.0f),   // continentalness — wide, allows large patches
+                        Climate.Parameter.span(-0.4f, 0.4f),   // erosion      — wide, allows large patches
+                        Climate.Parameter.point(0.0f),          // depth        — surface only
+                        Climate.Parameter.span(-1.0f, 1.0f),   // weirdness    — fully open, any terrain shape
+                        0L
                 ));
 
 

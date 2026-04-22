@@ -1,5 +1,6 @@
 package com.example.levmod.block;
 
+import com.example.levmod.blockentity.LevititeOreSpawnerBlockEntity;
 import com.example.levmod.blockentity.LevititeSpawnerBlockEntity;
 import com.example.levmod.registry.ModBlockEntities;
 import com.mojang.serialization.MapCodec;
@@ -36,7 +37,7 @@ public class LevititeOreSpawnerBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new LevititeSpawnerBlockEntity(pos, state);
+        return new LevititeOreSpawnerBlockEntity(pos, state);
     }
 
     @Nullable
