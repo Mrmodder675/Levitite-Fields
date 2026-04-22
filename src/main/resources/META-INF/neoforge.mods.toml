@@ -1,0 +1,44 @@
+modLoader   = "javafml"
+loaderVersion = "[4,)"
+license     = "MIT"
+
+[[mods]]
+    modId       = "levmod"
+    version     = "1.0.0"
+    displayName = "Levmod"
+    description = "Adds a more interesting way to obtain levitite"
+
+[[dependencies.levmod]]
+    modId        = "neoforge"
+    type         = "required"
+    versionRange = "[21.1,)"
+    ordering     = "NONE"
+    side         = "BOTH"
+
+[[dependencies.levmod]]
+    modId        = "minecraft"
+    type         = "required"
+    versionRange = "[1.21.1,1.22)"
+    ordering     = "NONE"
+    side         = "BOTH"
+
+[[dependencies.levmod]]
+    modId        = "sable"
+    type         = "required"
+    versionRange = "[1.0,)"
+    ordering     = "NONE"
+    side         = "BOTH"
+
+[[dependencies.levmod]]
+modId        = "aeronautics"
+type         = "required"
+versionRange = "[1.0,)"
+ordering     = "NONE"
+side         = "BOTH"
+
+[[dependencies.levmod]]
+modId        = "biolith"
+type         = "required"
+versionRange = "[3.0,)"
+ordering     = "NONE"
+side         = "BOTH"

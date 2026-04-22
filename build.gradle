@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'net.neoforged.gradle.userdev' version '7.0.145'
+}
+
+version   = project.mod_version
+group     = 'com.example.levmod'
+base { archivesName = project.mod_id }
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+runs {
+    configureEach {
+        systemProperty 'forge.logging.console.level', 'debug'
+        modSource project.sourceSets.main
+    }
+    client {}
+    server { programArguments.addAll '--nogui' }
+}
+
+repositories {
+    maven { url = "https://maven.terraformersmc.com/releases" }
+    maven {
+        name = 'RyanHCode Maven'
+        url  = 'https://maven.ryanhcode.dev/releases'
+    }
+}
+
+dependencies {
+    implementation "net.neoforged:neoforge:${neo_version}"
+    compileOnly "dev.ryanhcode.sable:sable-common-${minecraft_version}:${sable_version}"
+    implementation "com.terraformersmc:biolith-neoforge:${biolith_version}"
+}

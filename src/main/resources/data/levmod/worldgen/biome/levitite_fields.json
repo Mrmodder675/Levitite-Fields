@@ -1,0 +1,44 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.1,
+  "downfall": 0,
+  "temperature_modifier": "frozen",
+  "creature_spawn_probability": 0.5,
+  "effects": {
+    "sky_color": 1035750,
+    "fog_color": 12047305,
+    "water_color": 3433331,
+    "water_fog_color": 329011,
+    "grass_color": 1809609,
+    "foliage_color": 9159922,
+    "ambient_sound": "minecraft:block.amethyst_block.resonate"
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:enderman",
+        "weight": 4,
+        "minCount": 1,
+        "maxCount": 4
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "minecraft:canyon"
+    ]
+  },
+  "features": [
+    [
+      "levmod:levitite_ore_cluster",
+      "levmod:levitite_cluster"
+    ]
+  ]
+}
