@@ -37,6 +37,7 @@
   },
   "features": [
     [
+      "levmod:levitite_ore",
       "levmod:fallen_levitite_cluster",
       "levmod:levitite_ore_cluster",
       "levmod:levitite_cluster"],
@@ -54,7 +55,6 @@
     [],
     [],
     [
-      "minecraft:ore_dirt",
       "minecraft:ore_gravel",
       "minecraft:ore_granite_upper",
       "minecraft:ore_granite_lower",
@@ -91,10 +91,6 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_tall_grass_2",
-      "minecraft:trees_plains",
-      "minecraft:flower_plains",
-      "minecraft:patch_grass_plain",
       "minecraft:brown_mushroom_normal",
       "minecraft:red_mushroom_normal",
       "minecraft:patch_sugar_cane",

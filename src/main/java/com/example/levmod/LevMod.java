@@ -38,7 +38,7 @@ public class LevMod {
                         Climate.Parameter.span(-0.2f, -0.05f), // humidity     — narrow, rare trigger
                         Climate.Parameter.span(-0.5f, 1.0f),   // continentalness — wide, allows large patches
                         Climate.Parameter.span(-0.4f, 0.4f),   // erosion      — wide, allows large patches
-                        Climate.Parameter.point(-1.0f),          // depth        — surface only
+                        Climate.Parameter.point(0.0f),          // depth        — surface only
                         Climate.Parameter.span(-1.0f, 1.0f),   // weirdness    — fully open, any terrain shape
                         0L
                 ));
