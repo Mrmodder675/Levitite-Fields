@@ -1,9 +1,9 @@
 {
-  "feature": "levmod:levitite_cluster",
+  "feature": "levmod:levitite_ore",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 1
+      "count": 10
     },
     {
       "type": "minecraft:in_square"
@@ -13,21 +13,15 @@
       "height": {
         "type": "minecraft:uniform",
         "min_inclusive": {
-          "absolute": 64
+          "absolute": 0
         },
         "max_inclusive": {
-          "absolute": 200
+          "absolute": 256
         }
       }
     },
     {
       "type": "minecraft:biome"
-    },
-    {
-      "type": "minecraft:noise_based_count",
-      "noise_to_count_ratio": 1,
-      "noise_factor": 1,
-      "noise_offset": 1
     }
   ]
 }
