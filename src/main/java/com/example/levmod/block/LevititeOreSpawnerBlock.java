@@ -45,7 +45,7 @@ public class LevititeOreSpawnerBlock extends BaseEntityBlock {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(
             Level level, BlockState state, BlockEntityType<T> type) {
         if (level.isClientSide) return null;
-        return createTickerHelper(type, ModBlockEntities.LEVITITE_SPAWNER.get(),
-                LevititeSpawnerBlockEntity::tick);
+        return createTickerHelper(type, ModBlockEntities.LEVITITE_ORE_SPAWNER.get(),
+                LevititeOreSpawnerBlockEntity::tick);
     }
 }
