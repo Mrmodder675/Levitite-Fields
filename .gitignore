@@ -19,3 +19,8 @@ hs_err_pid*
 
 # Common working directory
 run
+/runs/client/crash-reports/*.txt
+/runs/client/logs/debug.log
+/runs/client/logs/latest.log
+/runs/client/config/fml.toml
+/runs/client/downloads/log.json

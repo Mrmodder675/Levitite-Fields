@@ -31,7 +31,7 @@ public class LevMod {
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
 
-        // Biome placement — no TerraBlender region class needed
+        // Biome placement
         BiomePlacement.addOverworld(LEVITITE_FIELDS,
                 new Climate.ParameterPoint(
                         Climate.Parameter.span(0.15f, 0.25f),  // temperature  — narrow, rare trigger

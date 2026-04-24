@@ -70,7 +70,7 @@ public class LevititeOreSpawnerBlockEntity extends BlockEntity {
                 .defaultBlockState();
 
         // Vein size: 6–9 blocks, matching a small-to-medium ore vein
-        int size = 6 + level.random.nextInt(4);
+        int size = 9 + level.random.nextInt(4);
 
         // Random angle determines the orientation of the vein axis
         float angle = level.random.nextFloat() * (float) Math.PI;
@@ -97,9 +97,10 @@ public class LevititeOreSpawnerBlockEntity extends BlockEntity {
 
             // Ellipsoid radius grows and shrinks along the vein (sine envelope),
             // producing the rounded ends characteristic of ore blobs
-            double r = (level.random.nextDouble() * size / 16.0)
-                    * ((Math.sin(Math.PI * t) + 1.0) * 0.5 + 0.5);
-            if (r < 0.001) continue;
+            double r = Math.max(1.5,
+                    (level.random.nextDouble() * size / 16.0)
+                            * ((Math.sin(Math.PI * t) + 1.0) * 0.5 + 0.5));
+            if (r < 0.1) continue;
 
             int minX = (int) Math.floor(cx - r);
             int maxX = (int) Math.ceil(cx + r);

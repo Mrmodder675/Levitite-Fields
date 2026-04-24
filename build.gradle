@@ -1,3 +1,5 @@
+import org.gradle.api.artifacts.Configuration
+
 plugins {
     id 'java'
     id 'net.neoforged.gradle.userdev' version '7.0.145'
@@ -13,6 +15,7 @@ runs {
     configureEach {
         systemProperty 'forge.logging.console.level', 'debug'
         modSource project.sourceSets.main
+        jvmArgument '-DignoreList=mixinextras-neoforge-0.4.1.jar,client-extra,neoforge-,asm-analysis-9.5.jar,asm-tree-9.5.jar,asm-commons-9.5.jar,asm-9.5.jar,asm-util-9.5.jar'
     }
     client {}
     server { programArguments.addAll '--nogui' }
@@ -24,10 +27,26 @@ repositories {
         name = 'RyanHCode Maven'
         url  = 'https://maven.ryanhcode.dev/releases'
     }
+
 }
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
     compileOnly "dev.ryanhcode.sable:sable-common-${minecraft_version}:${sable_version}"
-    implementation "com.terraformersmc:biolith-neoforge:${biolith_version}"
+    implementation("com.terraformersmc:biolith-neoforge:${biolith_version}") {
+        exclude group: 'org.ow2.asm'
+    }
+
+}
+
+configurations.configureEach {
+    if (it.state == Configuration.State.UNRESOLVED) {
+        resolutionStrategy {
+            force 'org.ow2.asm:asm:9.7'
+            force 'org.ow2.asm:asm-tree:9.7'
+            force 'org.ow2.asm:asm-commons:9.7'
+            force 'org.ow2.asm:asm-util:9.7'
+            force 'org.ow2.asm:asm-analysis:9.7'
+        }
+    }
 }

@@ -2,7 +2,7 @@
   "has_precipitation": false,
   "temperature": 0.1,
   "downfall": 0,
-  "temperature_modifier": "frozen",
+  "temperature_modifier": "none",
   "creature_spawn_probability": 0.5,
   "effects": {
     "sky_color": 1035750,
@@ -10,8 +10,7 @@
     "water_color": 3433331,
     "water_fog_color": 329011,
     "grass_color": 1809609,
-    "foliage_color": 9159922,
-    "ambient_sound": "minecraft:block.amethyst_block.resonate"
+    "foliage_color": 9159922
   },
   "spawners": {
     "monster": [
@@ -38,9 +37,9 @@
   "features": [
     [
       "levmod:levitite_ore",
-      "levmod:fallen_levitite_cluster",
       "levmod:levitite_ore_cluster",
-      "levmod:levitite_cluster"],
+      "levmod:levitite_cluster"
+    ],
     [
       "minecraft:lake_lava_underground",
       "minecraft:lake_lava_surface"
@@ -96,7 +95,6 @@
       "minecraft:patch_sugar_cane",
       "minecraft:patch_pumpkin"
     ],
-    [
-    ]
+    []
   ]
 }

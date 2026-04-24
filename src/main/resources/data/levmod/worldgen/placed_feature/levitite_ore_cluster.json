@@ -2,10 +2,8 @@
   "feature": "levmod:levitite_ore_cluster",
   "placement": [
     {
-      "type": "minecraft:noise_based_count",
-      "noise_to_count_ratio": 15,
-      "noise_factor": 1,
-      "noise_offset": 1
+      "type": "minecraft:count",
+      "count": 10
     },
     {
       "type": "minecraft:in_square"
@@ -25,6 +23,11 @@
     {
       "type": "minecraft:biome"
     },
-
+    {
+      "type": "minecraft:noise_based_count",
+      "noise_to_count_ratio": 1,
+      "noise_factor": 1,
+      "noise_offset": 1
+    }
   ]
 }
