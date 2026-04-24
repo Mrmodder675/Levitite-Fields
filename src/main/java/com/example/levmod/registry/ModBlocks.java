@@ -1,7 +1,6 @@
 package com.example.levmod.registry;
 
 import com.example.levmod.LevMod;
-import com.example.levmod.block.LevititeOreSpawnerBlock;
 import com.example.levmod.block.LevititeSpawnerBlock;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -22,8 +21,6 @@ public class ModBlocks {
     public static final DeferredBlock<LevititeSpawnerBlock> LEVITITE_SPAWNER =
             BLOCKS.register("levitite_spawner", LevititeSpawnerBlock::new);
 
-    public static final DeferredBlock<LevititeOreSpawnerBlock> LEVITITE_ORE_SPAWNER =
-            BLOCKS.register("levitite_ore_spawner", LevititeOreSpawnerBlock::new);
 }
 
 

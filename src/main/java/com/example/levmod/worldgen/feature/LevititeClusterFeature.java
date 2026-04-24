@@ -1,30 +1,57 @@
 package com.example.levmod.worldgen.feature;
 
 import com.example.levmod.registry.ModBlocks;
+import com.example.levmod.worldgen.feature.config.LevititeClusterConfig;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 
-public class LevititeClusterFeature extends Feature<NoneFeatureConfiguration> {
+public class LevititeClusterFeature extends Feature<LevititeClusterConfig> {
 
-    public LevititeClusterFeature(Codec<NoneFeatureConfiguration> codec) {
+    public LevititeClusterFeature(Codec<LevititeClusterConfig> codec) {
         super(codec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> ctx) {
-        BlockPos pos  = ctx.origin();
+    public boolean place(FeaturePlaceContext<LevititeClusterConfig> ctx) {
+        BlockPos center = ctx.origin();
         WorldGenLevel level = ctx.level();
+        LevititeClusterConfig config = ctx.config();
+        RandomSource random = ctx.random();
 
-        // Place the invisible spawner marker. The block entity fires on the
-        // first server tick after chunk load, places the levitite sphere, and
-        // assembles it into a Sable sub-level.
-        level.setBlock(pos, ModBlocks.LEVITITE_SPAWNER.get().defaultBlockState(),
-                Block.UPDATE_ALL);
-        return true;
+        int radius = config.minRadius() + random.nextInt(
+                Math.max(1, config.maxRadius() - config.minRadius() + 1));
+        int radiusSq = radius * radius;
+
+        boolean placed = false;
+
+        for (int dx = -radius; dx <= radius; dx++) {
+            for (int dy = -radius; dy <= radius; dy++) {
+                for (int dz = -radius; dz <= radius; dz++) {
+                    if (dx * dx + dy * dy + dz * dz > radiusSq) continue;
+                    // Skip origin — spawner goes there
+                    if (dx == 0 && dy == 0 && dz == 0) continue;
+
+                    BlockPos candidate = center.offset(dx, dy, dz).immutable();
+                    level.setBlock(candidate, config.stateProvider()
+                            .getState(random, candidate), Block.UPDATE_ALL);
+                    placed = true;
+                }
+            }
+        }
+
+        if (placed) {
+            // Place spawner at centre — surrounded by cluster blocks on all sides
+            // so findNeighbourAnchor will immediately find one.
+            level.setBlock(center, ModBlocks.LEVITITE_SPAWNER.get().defaultBlockState(),
+                    Block.UPDATE_ALL);
+        }
+
+        return placed;
     }
 }

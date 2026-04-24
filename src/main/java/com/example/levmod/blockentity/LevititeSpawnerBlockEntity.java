@@ -1,24 +1,20 @@
 package com.example.levmod.blockentity;
 
 import com.example.levmod.registry.ModBlockEntities;
-import com.example.levmod.registry.ModBlocks;
 import dev.ryanhcode.sable.api.SubLevelAssemblyHelper;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 
 public class LevititeSpawnerBlockEntity extends BlockEntity {
 
     private boolean hasTriggered = false;
-    // Wait one tick after chunk load before assembling, giving Sable time to
-    // fully initialise its physics world for this region.
-    private int tickDelay = 1;
+    private int tickDelay = 10;
 
     public LevititeSpawnerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.LEVITITE_SPAWNER.get(), pos, state);
@@ -32,20 +28,19 @@ public class LevititeSpawnerBlockEntity extends BlockEntity {
 
         ServerLevel serverLevel = (ServerLevel) level;
 
-        // Place a spherical cluster of levitite centred on this block.
-        // This call overwrites the spawner block itself, so no separate
-        // removeBlock() is needed afterwards.
-        BlockPos clusterAnchor = placeCluster(serverLevel, pos);
+        // Find any neighbouring solid block as the gather anchor.
+        // The spawner is air-like so Sable won't include it — we need
+        // a real levitite block to seed gatherConnectedBlocks from.
+        BlockPos anchor = findNeighbourAnchor(serverLevel, pos);
 
-        if (clusterAnchor == null) {
-            // Safety guard: nothing was placed, clean up the spawner.
+        if (anchor == null) {
+            // Nothing adjacent — cluster may have failed to place. Clean up.
             level.removeBlock(pos, false);
             return;
         }
 
-        // Gather all connected solid blocks starting from the cluster anchor.
         SubLevelAssemblyHelper.GatherResult result = SubLevelAssemblyHelper.gatherConnectedBlocks(
-                clusterAnchor,
+                anchor,
                 serverLevel,
                 10_000,
                 null
@@ -54,47 +49,34 @@ public class LevititeSpawnerBlockEntity extends BlockEntity {
         if (result.assemblyState() == SubLevelAssemblyHelper.GatherResult.State.SUCCESS) {
             SubLevelAssemblyHelper.assembleBlocks(
                     serverLevel,
-                    clusterAnchor,
+                    anchor,
                     result.blocks(),
                     result.boundingBox()
             );
         }
-        // Note: the spawner block was already overwritten by placeCluster(),
-        // so there is nothing left to remove here.
+
+        // Remove the spawner itself — it was never part of the cluster.
+        level.removeBlock(pos, false);
     }
 
     /**
-     * Places a spherical blob of levitite centred on {@code center}.
-     * The centre position itself is included, which overwrites the spawner block.
-     *
-     * @return the first block position placed, used as the Sable gather origin,
-     *         or {@code null} if nothing was placed (should never happen).
+     * Scans all 26 neighbours (3x3x3 minus self) for the first solid,
+     * non-spawner block to use as the Sable gather origin.
      */
     @Nullable
-    private static BlockPos placeCluster(ServerLevel level, BlockPos center) {
-        int radius = 0 + level.random.nextInt(4);
-        int radiusSq = radius * radius;
-
-        // Look up aeronautics:levitite at runtime
-        BlockState levitite = BuiltInRegistries.BLOCK
-                .get(ResourceLocation.fromNamespaceAndPath("aeronautics", "levitite"))
-                .defaultBlockState();
-
-        BlockPos firstPlaced = null;
-
-        for (int dx = -radius; dx <= radius; dx++) {
-            for (int dy = -radius; dy <= radius; dy++) {
-                for (int dz = -radius; dz <= radius; dz++) {
-                    if (dx * dx + dy * dy + dz * dz > radiusSq) continue;
-
-                    BlockPos candidate = center.offset(dx, dy, dz).immutable();
-                    level.setBlock(candidate, levitite, Block.UPDATE_IMMEDIATE);
-
-                    if (firstPlaced == null) firstPlaced = candidate;
+    private static BlockPos findNeighbourAnchor(ServerLevel level, BlockPos spawnerPos) {
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dy = -1; dy <= 1; dy++) {
+                for (int dz = -1; dz <= 1; dz++) {
+                    if (dx == 0 && dy == 0 && dz == 0) continue;
+                    BlockPos candidate = spawnerPos.offset(dx, dy, dz);
+                    BlockState state = level.getBlockState(candidate);
+                    if (!state.isAir() && !state.is(ModBlockEntities.LEVITITE_SPAWNER.get().getValidBlocks().iterator().next())) {
+                        return candidate;
+                    }
                 }
             }
         }
-
-        return firstPlaced;
+        return null;
     }
 }

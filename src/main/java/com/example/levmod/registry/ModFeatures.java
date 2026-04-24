@@ -3,6 +3,8 @@ package com.example.levmod.registry;
 import com.example.levmod.LevMod;
 import com.example.levmod.worldgen.feature.LevititeClusterFeature;
 import com.example.levmod.worldgen.feature.LevititeOreClusterFeature;
+import com.example.levmod.worldgen.feature.config.LevititeClusterConfig;
+import com.example.levmod.worldgen.feature.config.LevititeOreClusterConfig;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -16,9 +18,9 @@ public class ModFeatures {
 
     public static final DeferredHolder<Feature<?>, LevititeClusterFeature> LEVITITE_CLUSTER =
             FEATURES.register("levitite_cluster",
-                    () -> new LevititeClusterFeature(NoneFeatureConfiguration.CODEC));
+                    () -> new LevititeClusterFeature(LevititeClusterConfig.CODEC));
 
     public static final DeferredHolder<Feature<?>, LevititeOreClusterFeature> LEVITITE_ORE_CLUSTER =
             FEATURES.register("levitite_ore_cluster",
-                    () -> new LevititeOreClusterFeature(NoneFeatureConfiguration.CODEC));
+                    () -> new LevititeOreClusterFeature(LevititeOreClusterConfig.CODEC));
 }
