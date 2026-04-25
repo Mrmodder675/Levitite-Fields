@@ -4,6 +4,17 @@ package com.example.levmod;
 //TODO: Add Rarity Filters to all features
 //TODO: Add aeronautics:pearlescent_levitite features with lower spawn chance
 
+
+//Levitite Fields feature size layer Y ranges
+// Layer1 = 86 - 136
+//
+// Layer2 = 128 - 200
+//
+// Layer3 = 192 - 264
+//
+// Layer4 = 256 - 310
+
+
 import com.example.levmod.registry.ModBlockEntities;
 import com.example.levmod.registry.ModBlocks;
 import com.example.levmod.registry.ModFeatures;
