@@ -1,6 +1,6 @@
 {
   "has_precipitation": false,
-  "temperature": 0.1,
+  "temperature": 0.5,
   "downfall": 0,
   "temperature_modifier": "none",
   "creature_spawn_probability": 0.5,
