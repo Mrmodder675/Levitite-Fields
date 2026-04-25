@@ -1,5 +1,5 @@
 {
-  "feature": "levmod:small_levitite_cluster",
+  "feature": "levmod:levitite_fields/layer_2/small_levitite_cluster",
   "placement": [
     {
       "type": "minecraft:count",

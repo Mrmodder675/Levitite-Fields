@@ -1,5 +1,5 @@
 {
-  "feature": "levmod:medium_levitite_ore_cluster",
+  "feature": "levmod:levitite_fields/layer_3/medium_levitite_ore_cluster",
   "placement": [
     {
       "type": "minecraft:count",

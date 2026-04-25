@@ -37,14 +37,14 @@
   "features": [
     [
       "levmod:levitite_ore",
-      "levmod:sparse_levitite_ore_cluster",
-      "levmod:sparse_levitite_cluster",
-      "levmod:small_levitite_ore_cluster",
-      "levmod:small_levitite_cluster",
-      "levmod:medium_levitite_ore_cluster",
-      "levmod:medium_levitite_cluster",
-      "levmod:large_levitite_ore_cluster",
-      "levmod:large_levitite_cluster"
+      "levmod:levitite_fields/layer_1/sparse_levitite_ore_cluster",
+      "levmod:levitite_fields/layer_1/sparse_levitite_cluster",
+      "levmod:levitite_fields/layer_2/small_levitite_ore_cluster",
+      "levmod:levitite_fields/layer_2/small_levitite_cluster",
+      "levmod:levitite_fields/layer_3/medium_levitite_ore_cluster",
+      "levmod:levitite_fields/layer_3/medium_levitite_cluster",
+      "levmod:levitite_fields/layer_4/large_levitite_ore_cluster",
+      "levmod:levitite_fields/layer_4/large_levitite_cluster"
     ],
     [
       "minecraft:lake_lava_underground",

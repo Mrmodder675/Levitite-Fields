@@ -1,5 +1,5 @@
 {
-  "feature": "levmod:sparse_levitite_ore_cluster",
+  "feature": "levmod:levitite_fields/layer_1/sparse_levitite_ore_cluster",
   "placement": [
     {
       "type": "minecraft:biome"

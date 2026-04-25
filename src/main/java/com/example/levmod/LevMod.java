@@ -1,5 +1,9 @@
 package com.example.levmod;
 
+//TODO: Tune spawn chances of especially the larger features down
+//TODO: Add Rarity Filters to all features
+//TODO: Add aeronautics:pearlescent_levitite features with lower spawn chance
+
 import com.example.levmod.registry.ModBlockEntities;
 import com.example.levmod.registry.ModBlocks;
 import com.example.levmod.registry.ModFeatures;
