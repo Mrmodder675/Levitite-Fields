@@ -1,0 +1,12 @@
+{
+  "type": "levmod:levitite_ore_cluster",
+  "config": {
+    "min_size": 12,
+    "max_size": 16,
+    "max_radius": 3,
+    "state_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": { "Name": "aeronautics:levitite" }
+    }
+  }
+}
