@@ -2,6 +2,9 @@
   "feature": "levmod:levitite_fields/layer_4/large_levitite_cluster",
   "placement": [
     {
+      "type": "minecraft:biome"
+    },
+    {
       "type": "minecraft:count",
       "count": 1
     },
@@ -20,9 +23,7 @@
         }
       }
     },
-    {
-      "type": "minecraft:biome"
-    },
+    ,
     {
       "type": "minecraft:noise_based_count",
       "noise_to_count_ratio": 1,

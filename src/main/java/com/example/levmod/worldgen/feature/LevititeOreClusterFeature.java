@@ -7,7 +7,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
@@ -70,6 +69,10 @@ public class LevititeOreClusterFeature extends Feature<LevititeOreClusterConfig>
                         if (nx * nx + ny * ny + nz * nz >= 1.0) continue;
 
                         BlockPos candidate = new BlockPos(bx, by, bz).immutable();
+
+                        // Guard against writing outside the generation region
+                        if (!level.ensureCanWrite(candidate)) continue;
+
                         level.setBlock(candidate, config.stateProvider()
                                 .getState(random, candidate), Block.UPDATE_ALL);
                         placed = true;
@@ -79,10 +82,10 @@ public class LevititeOreClusterFeature extends Feature<LevititeOreClusterConfig>
         }
 
         if (placed) {
-            // Place spawner at origin to trigger Sable assembly on chunk load.
-            // The spawner scans its neighbours for a real block as gather anchor.
-            level.setBlock(pos, ModBlocks.LEVITITE_SPAWNER.get().defaultBlockState(),
-                    Block.UPDATE_ALL);
+            if (level.ensureCanWrite(pos)) {
+                level.setBlock(pos, ModBlocks.LEVITITE_SPAWNER.get().defaultBlockState(),
+                        Block.UPDATE_ALL);
+            }
         }
 
         return placed;

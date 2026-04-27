@@ -7,7 +7,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
@@ -38,6 +37,9 @@ public class LevititeClusterFeature extends Feature<LevititeClusterConfig> {
                     if (dx == 0 && dy == 0 && dz == 0) continue;
 
                     BlockPos candidate = center.offset(dx, dy, dz).immutable();
+
+                    if (!level.ensureCanWrite(candidate)) continue;
+
                     level.setBlock(candidate, config.stateProvider()
                             .getState(random, candidate), Block.UPDATE_ALL);
                     placed = true;
@@ -46,10 +48,10 @@ public class LevititeClusterFeature extends Feature<LevititeClusterConfig> {
         }
 
         if (placed) {
-            // Place spawner at centre — surrounded by cluster blocks on all sides
-            // so findNeighbourAnchor will immediately find one.
-            level.setBlock(center, ModBlocks.LEVITITE_SPAWNER.get().defaultBlockState(),
-                    Block.UPDATE_ALL);
+            if (level.ensureCanWrite(center)) {
+                level.setBlock(center, ModBlocks.LEVITITE_SPAWNER.get().defaultBlockState(),
+                        Block.UPDATE_ALL);
+            }
         }
 
         return placed;
