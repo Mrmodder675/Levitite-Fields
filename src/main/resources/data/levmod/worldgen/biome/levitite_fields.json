@@ -35,17 +35,7 @@
     ]
   },
   "features": [
-    [
-      "levmod:levitite_ore",
-      "levmod:levitite_fields/layer_1/sparse_levitite_ore_cluster",
-      "levmod:levitite_fields/layer_1/sparse_levitite_cluster",
-      "levmod:levitite_fields/layer_2/small_levitite_ore_cluster",
-      "levmod:levitite_fields/layer_2/small_levitite_cluster",
-      "levmod:levitite_fields/layer_3/medium_levitite_ore_cluster",
-      "levmod:levitite_fields/layer_3/medium_levitite_cluster",
-      "levmod:levitite_fields/layer_4/large_levitite_ore_cluster",
-      "levmod:levitite_fields/layer_4/large_levitite_cluster"
-    ],
+    [],
     [
       "minecraft:lake_lava_underground",
       "minecraft:lake_lava_surface"
@@ -89,7 +79,16 @@
       "minecraft:disk_clay",
       "minecraft:disk_gravel"
     ],
-    [],
+    [
+      "levmod:levitite_ore",
+      "levmod:levitite_fields/layer_1/sparse_levitite_ore_cluster",
+      "levmod:levitite_fields/layer_1/sparse_levitite_cluster",
+      "levmod:levitite_fields/layer_2/small_levitite_ore_cluster",
+      "levmod:levitite_fields/layer_2/small_levitite_cluster",
+      "levmod:levitite_fields/layer_3/medium_levitite_ore_cluster",
+      "levmod:levitite_fields/layer_3/medium_levitite_cluster",
+      "levmod:levitite_fields/layer_4/large_levitite_ore_cluster",
+      "levmod:levitite_fields/layer_4/large_levitite_cluster"],
     [
       "minecraft:spring_water",
       "minecraft:spring_lava"

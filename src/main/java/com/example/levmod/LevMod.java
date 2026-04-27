@@ -49,7 +49,7 @@ public class LevMod {
         // Biome placement
         BiomePlacement.addOverworld(LEVITITE_FIELDS,
                 new Climate.ParameterPoint(
-                        Climate.Parameter.span(0.15f, 0.25f),  // temperature  — narrow, rare trigger
+                        Climate.Parameter.span(-0.15f, 0.25f),  // temperature  — narrow, rare trigger
                         Climate.Parameter.span(-0.2f, -0.05f), // humidity     — narrow, rare trigger
                         Climate.Parameter.span(-0.5f, 1.0f),   // continentalness — wide, allows large patches
                         Climate.Parameter.span(-0.4f, 0.4f),   // erosion      — wide, allows large patches

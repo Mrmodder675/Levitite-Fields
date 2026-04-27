@@ -32,6 +32,14 @@
     {
       "type": "minecraft:rarity_filter",
       "chance": 3
+    },
+    {
+      "type": "minecraft:surface_relative_threshold_filter",
+      "height": 10,
+      "axis": "y",
+      "heightmap": "MOTION_BLOCKING",
+      "min_inclusive": 0,
+      "max_inclusive": 256
     }
   ]
 }
