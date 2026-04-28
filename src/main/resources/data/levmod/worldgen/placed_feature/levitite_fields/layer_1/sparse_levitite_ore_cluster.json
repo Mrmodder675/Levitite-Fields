@@ -5,8 +5,10 @@
       "type": "minecraft:biome"
     },
     {
-      "type": "minecraft:count",
-      "count": 2
+      "type": "minecraft:noise_based_count",
+      "noise_to_count_ratio": 1,
+      "noise_factor": 15,
+      "noise_offset": 2
     },
     {
       "type": "minecraft:in_square"
@@ -15,9 +17,17 @@
       "type": "minecraft:height_range",
       "height": {
         "type": "minecraft:uniform",
-        "min_inclusive": { "absolute": 86 },
-        "max_inclusive": { "absolute": 136 }
+        "min_inclusive": {
+          "absolute": 86
+        },
+        "max_inclusive": {
+          "absolute": 136
+        }
       }
+    },
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 3
     },
     {
       "type": "minecraft:random_offset",
@@ -29,21 +39,8 @@
       "y_spread": {
         "type": "minecraft:uniform",
         "min_inclusive": 0,
-        "max_inclusive": 2
+        "max_inclusive": 5
       }
-    },
-    {
-      "type": "minecraft:rarity_filter",
-      "chance": 3
-    },
-    {
-      "type": "minecraft:surface_relative_threshold_filter",
-      "height": 10,
-      "axis": "y",
-      "heightmap": "MOTION_BLOCKING",
-      "min_inclusive": 0,
-      "max_inclusive": 256
     }
-
   ]
 }

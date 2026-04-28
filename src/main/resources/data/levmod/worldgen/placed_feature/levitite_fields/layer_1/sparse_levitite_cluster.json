@@ -5,10 +5,6 @@
       "type": "minecraft:biome"
     },
     {
-      "type": "minecraft:count",
-      "count": 1
-    },
-    {
       "type": "minecraft:noise_based_count",
       "noise_to_count_ratio": 1,
       "noise_factor": 15,
@@ -34,12 +30,17 @@
       "chance": 3
     },
     {
-      "type": "minecraft:surface_relative_threshold_filter",
-      "height": 10,
-      "axis": "y",
-      "heightmap": "MOTION_BLOCKING",
-      "min_inclusive": 0,
-      "max_inclusive": 256
+      "type": "minecraft:random_offset",
+      "xz_spread": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 0,
+        "max_inclusive": 10
+      },
+      "y_spread": {
+        "type": "minecraft:uniform",
+        "min_inclusive": 0,
+        "max_inclusive": 5
+      }
     }
   ]
 }
