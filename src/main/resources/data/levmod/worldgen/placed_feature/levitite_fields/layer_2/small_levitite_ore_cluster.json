@@ -2,9 +2,6 @@
   "feature": "levmod:levitite_fields/layer_2/small_levitite_ore_cluster",
   "placement": [
     {
-      "type": "minecraft:biome"
-    },
-    {
       "type": "minecraft:noise_based_count",
       "noise_to_count_ratio": 1,
       "noise_factor": 1,
@@ -41,6 +38,9 @@
         "min_inclusive": 0,
         "max_inclusive": 5
       }
+    },
+    {
+      "type": "minecraft:biome"
     }
   ]
 }
