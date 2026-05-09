@@ -7,6 +7,7 @@ license     = "MIT"
     version     = "0.1.0-beta"
     displayName = "Levmod"
     description = "Adds a more interesting way to obtain levitite"
+    logoFile = "Levitite_Fields_logo.png"
 
 [[dependencies.levmod]]
     modId        = "neoforge"
