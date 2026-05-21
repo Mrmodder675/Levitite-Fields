@@ -1,0 +1,50 @@
+{
+  "temperature": 0,
+  "downfall": 0,
+  "has_precipitation": false,
+  "effects": {
+    "sky_color": 0,
+    "fog_color": 59898,
+    "water_color": 59898,
+    "water_fog_color": 59898,
+    "grass_color": 59898,
+    "foliage_color": 59898,
+    "music": {
+      "sound": "minecraft:music.end",
+      "min_delay": 0,
+      "max_delay": 6000,
+      "replace_current_music": false
+    },
+    "particle": {
+      "options": {
+        "type": "minecraft:dust",
+        "color": [
+          235,
+          0,
+          255
+        ],
+        "scale": 1
+      },
+      "probability": 0.1
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:enderman",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 4
+      }
+    ]
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [
+      "levmod:end_levitite_fields/end_levitite_ore",
+      "levmod:end_levitite_fields/large_end_levitite_cluster",
+      "levmod:end_levitite_fields/large_end_levitite_ore_cluster"
+    ]
+  ]
+}

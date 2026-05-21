@@ -35,6 +35,11 @@ public class LevMod {
 
     public static final String MOD_ID = "levmod";
 
+    public static final ResourceKey<Biome> LEVITITE_FIELDS_END = ResourceKey.create(
+            Registries.BIOME,
+            ResourceLocation.fromNamespaceAndPath(MOD_ID, "levitite_fields_end")
+    );
+
     public static final ResourceKey<Biome> LEVITITE_FIELDS = ResourceKey.create(
             Registries.BIOME,
             ResourceLocation.fromNamespaceAndPath(MOD_ID, "levitite_fields")

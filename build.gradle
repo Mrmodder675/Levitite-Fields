@@ -36,6 +36,8 @@ repositories {
         name = 'RyanHCode Maven'
         url = 'https://maven.ryanhcode.dev/releases'
     }
+
+
 }
 
 dependencies {
@@ -47,6 +49,8 @@ dependencies {
         exclude group: 'org.ow2.asm'
     }
 }
+
+
 
 configurations.configureEach {
     if (it.state == Configuration.State.UNRESOLVED) {

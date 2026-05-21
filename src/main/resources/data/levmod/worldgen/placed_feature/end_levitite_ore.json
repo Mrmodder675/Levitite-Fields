@@ -1,5 +1,5 @@
 {
-  "feature": "levmod:levitite_ore",
+  "feature": "levmod:end_levitite_ore",
   "placement": [
     {
       "type": "minecraft:count_on_every_layer",
@@ -13,7 +13,7 @@
       "height": {
         "type": "minecraft:uniform",
         "min_inclusive": {
-          "absolute": -32
+          "absolute": 0
         },
         "max_inclusive": {
           "absolute": 256

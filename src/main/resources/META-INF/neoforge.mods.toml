@@ -9,6 +9,9 @@ license     = "MIT"
     description = "Adds a more interesting way to obtain levitite"
     logoFile = "Levitite_Fields_logo.png"
 
+[[mixins]]
+config = "levmod.mixins.json"
+
 [[dependencies.levmod]]
     modId        = "neoforge"
     type         = "required"
