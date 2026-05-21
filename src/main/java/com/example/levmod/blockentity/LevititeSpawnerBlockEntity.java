@@ -4,17 +4,29 @@ import com.example.levmod.registry.ModBlockEntities;
 import dev.ryanhcode.sable.api.SubLevelAssemblyHelper;
 import dev.ryanhcode.sable.sublevel.ServerSubLevel;
 import dev.ryanhcode.sable.sublevel.system.SubLevelPhysicsSystem;
+import com.google.common.base.Suppliers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.joml.Quaterniond;
+import java.util.function.Supplier;
 
 public class LevititeSpawnerBlockEntity extends BlockEntity {
 
     private boolean hasTriggered = false;
     private int tickDelay = 10;
+
+    private static final Supplier<BlockState> LEVITITE_STATE = Suppliers.memoize(() -> 
+        BuiltInRegistries.BLOCK.getOptional(ResourceLocation.tryParse("aeronautics:levitite"))
+                .map(Block::defaultBlockState)
+                .orElse(Blocks.AIR.defaultBlockState())
+    );
 
     public LevititeSpawnerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.LEVITITE_SPAWNER.get(), pos, state);
@@ -43,6 +55,23 @@ public class LevititeSpawnerBlockEntity extends BlockEntity {
         );
 
         if (result.assemblyState() == SubLevelAssemblyHelper.GatherResult.State.SUCCESS) {
+            Block targetBlock = LEVITITE_STATE.get().getBlock();
+
+            int levititeNeighbors = 0;
+            for (net.minecraft.core.Direction direction : net.minecraft.core.Direction.values()) {
+                BlockPos neighborPos = pos.relative(direction);
+                if (level.getBlockState(neighborPos).is(targetBlock)) {
+                    levititeNeighbors++;
+                }
+            }
+
+            // If it matches 3 or more, replace with levitite; otherwise, clear it
+            if (levititeNeighbors >= 3) {
+                level.setBlock(pos, LEVITITE_STATE.get(), 3);
+            } else {
+                level.removeBlock(pos, false);
+            }
+            
             ServerSubLevel subLevel = SubLevelAssemblyHelper.assembleBlocks(
                     serverLevel,
                     anchor,
@@ -67,6 +96,7 @@ public class LevititeSpawnerBlockEntity extends BlockEntity {
                         orientation
                 );
             }
+            return;
         }
 
         level.removeBlock(pos, false);
