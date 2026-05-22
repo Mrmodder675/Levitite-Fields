@@ -24,7 +24,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
@@ -53,8 +52,17 @@ public class LevMod {
         ModFeatures.FEATURES.register(modEventBus);
 
 
-        BiomePlacement.replaceEnd(Biomes.END_HIGHLANDS, END_LEVITITE_FIELDS, 0.1d);
-        // Biome placement
+        BiomePlacement.addEnd(END_LEVITITE_FIELDS,
+                new Climate.ParameterPoint(
+                        Climate.Parameter.span(-0.15f, 0.25f),  // temperature  — narrow, rare trigger
+                        Climate.Parameter.span(-0.2f, -0.05f), // humidity     — narrow, rare trigger
+                        Climate.Parameter.span(-0.5f, 1.0f),   // continentalness — wide, allows large patches
+                        Climate.Parameter.span(-0.4f, 0.4f),   // erosion      — wide, allows large patches
+                        Climate.Parameter.span(-1.0f, 1.0f),          // depth        — surface only
+                        Climate.Parameter.span(-1.0f, 1.0f),   // weirdness    — fully open, any terrain shape
+                        0L
+                ));
+
         BiomePlacement.addOverworld(LEVITITE_FIELDS,
                 new Climate.ParameterPoint(
                         Climate.Parameter.span(-0.15f, 0.25f),  // temperature  — narrow, rare trigger

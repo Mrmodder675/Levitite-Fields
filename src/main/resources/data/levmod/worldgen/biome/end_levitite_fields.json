@@ -42,7 +42,7 @@
   "carvers": {},
   "features": [
     [
-      "levmod:end_levitite_fields/end_levitite_ore",
+      "levmod:end_levitite_ore",
       "levmod:end_levitite_fields/large_end_levitite_cluster",
       "levmod:end_levitite_fields/large_end_levitite_ore_cluster"
     ]
