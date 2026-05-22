@@ -24,6 +24,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
@@ -35,9 +36,9 @@ public class LevMod {
 
     public static final String MOD_ID = "levmod";
 
-    public static final ResourceKey<Biome> LEVITITE_FIELDS_END = ResourceKey.create(
+    public static final ResourceKey<Biome> END_LEVITITE_FIELDS = ResourceKey.create(
             Registries.BIOME,
-            ResourceLocation.fromNamespaceAndPath(MOD_ID, "levitite_fields_end")
+            ResourceLocation.fromNamespaceAndPath(MOD_ID, "end_levitite_fields")
     );
 
     public static final ResourceKey<Biome> LEVITITE_FIELDS = ResourceKey.create(
@@ -51,6 +52,8 @@ public class LevMod {
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
 
+
+        BiomePlacement.replaceEnd(Biomes.END_HIGHLANDS, END_LEVITITE_FIELDS, 0.1d);
         // Biome placement
         BiomePlacement.addOverworld(LEVITITE_FIELDS,
                 new Climate.ParameterPoint(
