@@ -4,10 +4,8 @@
     "targets": [
       {
         "target": {
-          "predicate_type": "minecraft:blockstate_match",
-          "block_state": {
-            "Name": "minecraft:end_stone"
-          }
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:end_stone"
         },
         "state": {
           "Name": "aeronautics:levitite"

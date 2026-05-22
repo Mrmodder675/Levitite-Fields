@@ -1,7 +1,7 @@
 {
   "feature": "levmod:end_levitite_ore",
   "placement": [
-    { "type": "minecraft:count_on_every_layer", "count": 2 },
+    { "type": "minecraft:count", "count": 2 },
     { "type": "minecraft:in_square" },
     {
       "type": "minecraft:height_range",
