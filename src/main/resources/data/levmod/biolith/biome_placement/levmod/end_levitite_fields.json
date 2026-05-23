@@ -4,12 +4,12 @@
       "dimension": "minecraft:end",
       "biome": "levmod:end_levitite_fields",
       "noise_point": {
-        "temperature": { "min": -1.0, "max": 1.0 },
-        "humidity": { "min": -1.0, "max": 1.0 },
-        "continentalness": { "min": -1.0, "max": 1.0 },
+        "temperature": { "min": -0.5, "max": 0.5 },
+        "humidity": { "min": -0.5, "max": 0.5 },
+        "continentalness": { "min": -0.5, "max": 0.5 },
         "erosion": { "min": -1.0, "max": -0.21875 },
-        "depth": { "min": -1.0, "max": 1.0 },
-        "weirdness": { "min": -1.0, "max": 1.0 },
+        "depth": { "min": -0.5, "max": 0.5 },
+        "weirdness": { "min": -0.5, "max": 0.5 },
         "offset": 0.0
       }
     }
