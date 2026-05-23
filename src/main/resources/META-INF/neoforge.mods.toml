@@ -1,6 +1,6 @@
 modLoader   = "javafml"
 loaderVersion = "[4,)"
-license     = "MIT"
+license     = "ARR"
 
 [[mods]]
     modId       = "levmod"
@@ -19,14 +19,14 @@ license     = "MIT"
 [[dependencies.levmod]]
     modId        = "minecraft"
     type         = "required"
-    versionRange = "[1.21.1,1.22)"
+    versionRange = "[1.21.1]"
     ordering     = "NONE"
     side         = "BOTH"
 
 [[dependencies.levmod]]
     modId        = "sable"
     type         = "required"
-    versionRange = "[1.0,)"
+    versionRange = "[1.2.2,)"
     ordering     = "NONE"
     side         = "BOTH"
 
@@ -40,6 +40,6 @@ side         = "BOTH"
 [[dependencies.levmod]]
 modId        = "biolith"
 type         = "required"
-versionRange = "[3.0,)"
+versionRange = "[3.5.1,)"
 ordering     = "NONE"
 side         = "BOTH"
