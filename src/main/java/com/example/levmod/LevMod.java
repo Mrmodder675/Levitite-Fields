@@ -1,7 +1,5 @@
 package com.example.levmod;
 
-//TODO: Tune End Levitite Fields
-
 //Levitite Fields feature size layer Y ranges
 // Layer1 = 86 - 136
 //

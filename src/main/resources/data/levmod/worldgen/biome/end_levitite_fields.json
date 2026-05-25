@@ -17,10 +17,9 @@
     },
     "particle": {
       "options": {
-        "type": "minecraft:end_rod",
-        "scale": 1
+        "type": "minecraft:end_rod"
       },
-      "probability": 0.1
+      "probability": 0.005
     }
   },
   "spawners": {
@@ -37,6 +36,7 @@
   "carvers": {},
   "features": [
     [
+      "minecraft:end_island_decorated",
       "levmod:end_levitite_fields/large_end_levitite_cluster",
       "levmod:end_levitite_fields/large_end_levitite_ore_cluster"
     ],

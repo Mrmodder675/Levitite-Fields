@@ -24,7 +24,7 @@
     },
     {
       "type": "minecraft:rarity_filter",
-      "chance": 10
+      "chance": 4
     },
     {
       "type": "minecraft:random_offset",
