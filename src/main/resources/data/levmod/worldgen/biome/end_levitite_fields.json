@@ -17,12 +17,7 @@
     },
     "particle": {
       "options": {
-        "type": "minecraft:dust",
-        "color": [
-          235,
-          0,
-          255
-        ],
+        "type": "minecraft:end_rod",
         "scale": 1
       },
       "probability": 0.1

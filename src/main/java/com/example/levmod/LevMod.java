@@ -1,9 +1,6 @@
 package com.example.levmod;
 
-//TODO: Tune spawn chances of especially the larger features down
-//TODO: Add Rarity Filters to all features
-//TODO: Add aeronautics:pearlescent_levitite features with lower spawn chance
-
+//TODO: Tune End Levitite Fields
 
 //Levitite Fields feature size layer Y ranges
 // Layer1 = 86 - 136
@@ -19,11 +16,14 @@ import com.example.levmod.registry.ModBlockEntities;
 import com.example.levmod.registry.ModBlocks;
 import com.example.levmod.registry.ModFeatures;
 import com.terraformersmc.biolith.api.biome.BiomePlacement;
+import com.terraformersmc.biolith.api.biome.sub.CriterionBuilder;
+import com.terraformersmc.biolith.api.biome.sub.RatioTargets;
 import com.terraformersmc.biolith.api.surface.SurfaceGeneration;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.biome.Climate;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.SurfaceRules;
@@ -51,8 +51,18 @@ public class LevMod {
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModFeatures.FEATURES.register(modEventBus);
 
+        BiomePlacement.addSubEnd(
+                Biomes.SMALL_END_ISLANDS,
+                LevMod.END_LEVITITE_FIELDS,
+                CriterionBuilder.ratio(RatioTargets.CENTER, 0.2f, 0.75f)
+        );
 
+        BiomePlacement.addSubEnd(
+                Biomes.THE_END,
+                LevMod.END_LEVITITE_FIELDS,
+                CriterionBuilder.ratio(RatioTargets.EDGE, 0.1f, 0.5f)
 
+        );
 
         BiomePlacement.addOverworld(LEVITITE_FIELDS,
                 new Climate.ParameterPoint(
