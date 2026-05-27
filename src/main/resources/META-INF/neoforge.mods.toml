@@ -4,7 +4,7 @@ license     = "ARR"
 
 [[mods]]
     modId       = "levmod"
-    version     = "0.2.0"
+    version     = "0.2.1"
     displayName = "Levitite Fields"
     description = "Adds a more interesting way to obtain levitite"
     logoFile = "Levitite_Fields_logo.png"
