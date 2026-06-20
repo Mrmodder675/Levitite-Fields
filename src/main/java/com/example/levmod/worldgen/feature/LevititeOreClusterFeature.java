@@ -1,5 +1,6 @@
 package com.example.levmod.worldgen.feature;
 
+import com.example.levmod.blockentity.LevititeSpawnerBlockEntity;
 import com.example.levmod.registry.ModBlocks;
 import com.example.levmod.worldgen.feature.config.LevititeOreClusterConfig;
 import com.mojang.serialization.Codec;
@@ -22,6 +23,9 @@ public class LevititeOreClusterFeature extends Feature<LevititeOreClusterConfig>
         WorldGenLevel level = ctx.level();
         LevititeOreClusterConfig config = ctx.config();
         RandomSource random = ctx.random();
+
+        // Line 28: center → pos
+        Block targetBlock = config.stateProvider().getState(random, pos).getBlock();
 
         int size = config.minSize() + random.nextInt(
                 Math.max(1, config.maxSize() - config.minSize() + 1));
@@ -84,6 +88,9 @@ public class LevititeOreClusterFeature extends Feature<LevititeOreClusterConfig>
             if (level.ensureCanWrite(pos)) {
                 level.setBlock(pos, ModBlocks.LEVITITE_SPAWNER.get().defaultBlockState(),
                         Block.UPDATE_ALL);
+                if (level.getBlockEntity(pos) instanceof LevititeSpawnerBlockEntity be) {
+                    be.setTargetBlock(targetBlock);
+                }
             }
         }
 
