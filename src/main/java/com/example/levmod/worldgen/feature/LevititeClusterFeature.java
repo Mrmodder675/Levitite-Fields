@@ -1,5 +1,6 @@
 package com.example.levmod.worldgen.feature;
 
+import com.example.levmod.blockentity.LevititeSpawnerBlockEntity;
 import com.example.levmod.registry.ModBlocks;
 import com.example.levmod.worldgen.feature.config.LevititeClusterConfig;
 import com.mojang.serialization.Codec;
@@ -22,6 +23,8 @@ public class LevititeClusterFeature extends Feature<LevititeClusterConfig> {
         WorldGenLevel level = ctx.level();
         LevititeClusterConfig config = ctx.config();
         RandomSource random = ctx.random();
+
+        Block targetBlock = config.stateProvider().getState(random, center).getBlock();
 
         int radius = config.minRadius() + random.nextInt(
                 Math.max(1, config.maxRadius() - config.minRadius() + 1));
@@ -51,6 +54,9 @@ public class LevititeClusterFeature extends Feature<LevititeClusterConfig> {
             if (level.ensureCanWrite(center)) {
                 level.setBlock(center, ModBlocks.LEVITITE_SPAWNER.get().defaultBlockState(),
                         Block.UPDATE_ALL);
+                if (level.getBlockEntity(center) instanceof LevititeSpawnerBlockEntity be) {
+                    be.setTargetBlock(targetBlock);
+                }
             }
         }
 
