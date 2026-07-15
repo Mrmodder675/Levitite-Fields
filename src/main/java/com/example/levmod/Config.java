@@ -17,6 +17,7 @@ public class Config {
 
     public final ModConfigSpec.BooleanValue generateLevititeFields;
     public final ModConfigSpec.BooleanValue generateEndLevititeFields;
+    public final ModConfigSpec.BooleanValue generatePaintedLevititeFields;
 
     public Config(ModConfigSpec.Builder builder) {
         generateLevititeFields = builder
@@ -26,5 +27,9 @@ public class Config {
         generateEndLevititeFields = builder
                 .comment("Should the End Levitite Fields Biome generate. Default: true")
                 .define("generateEndLevititeFields", true);
+
+        generatePaintedLevititeFields = builder
+                .comment("Should the Painted Levitite Fields Biome generate. Default: true")
+                .define("generatePaintedLevititeFields", true);
     }
 }
