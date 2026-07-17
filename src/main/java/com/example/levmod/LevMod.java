@@ -83,12 +83,34 @@ public class LevMod {
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
+        double LFieldsLowerChance = Config.INSTANCE.levititeFieldsLowerChance.get();
+        double LFieldsUpperChance = Config.INSTANCE.levititeFieldsUpperChance.get();
+        double ELFieldsLowerChance = Config.INSTANCE.endLevititeFieldsLowerChance.get();
+        double ELFieldsUpperChance = Config.INSTANCE.endLevititeFieldsUpperChance.get();
+        double PLFieldsLowerChance = Config.INSTANCE.paintedLevititeFieldsLowerChance.get();
+        double PLFieldsUpperChance = Config.INSTANCE.paintedLevititeFieldsUpperChance.get();
+        try {
+            if (LFieldsLowerChance > LFieldsUpperChance)
+                throw new RuntimeException("Levitite Fields configured lower chance is higher than its upper chance, resetting to defaults");
+            if (ELFieldsLowerChance > ELFieldsUpperChance)
+                throw new RuntimeException("End Levitite Fields configured lower chance is higher than its upper chance, resetting to defaults");
+            if (PLFieldsLowerChance > PLFieldsUpperChance)
+                throw new RuntimeException("Painted Levitite Fields configured lower chance is higher than its upper chance, resetting to defaults");
+        } catch (RuntimeException e) {
+            LFieldsLowerChance = Config.INSTANCE.levititeFieldsLowerChance.getRaw();
+            LFieldsUpperChance = Config.INSTANCE.levititeFieldsUpperChance.getRaw();
+            ELFieldsLowerChance = Config.INSTANCE.endLevititeFieldsLowerChance.getRaw();
+            ELFieldsUpperChance = Config.INSTANCE.endLevititeFieldsUpperChance.getRaw();
+            PLFieldsLowerChance = Config.INSTANCE.paintedLevititeFieldsLowerChance.getRaw();
+            PLFieldsUpperChance = Config.INSTANCE.paintedLevititeFieldsUpperChance.getRaw();
+        }
+
         if (Config.INSTANCE.generatePaintedLevititeFields.get() && ModList.get().isLoaded("aeronautics_dyeable_components"))
         {
             BiomePlacement.addSubOverworld(
                     Biomes.BADLANDS,
                     LevMod.PAINTED_LEVITITE_FIELDS,
-                    CriterionBuilder.ratio(RatioTargets.CENTER, Config.INSTANCE.paintedLevititeFieldsLowerChance.get().floatValue(), Config.INSTANCE.paintedLevititeFieldsUpperChance.get().floatValue())
+                    CriterionBuilder.ratio(RatioTargets.CENTER, (float)PLFieldsLowerChance, (float)PLFieldsUpperChance)
             );
         }
 
@@ -96,12 +118,12 @@ public class LevMod {
             BiomePlacement.addSubEnd(
                     Biomes.SMALL_END_ISLANDS,
                     LevMod.END_LEVITITE_FIELDS,
-                    CriterionBuilder.ratio(RatioTargets.CENTER, Config.INSTANCE.endLevititeFieldsLowerChance.get().floatValue(), Config.INSTANCE.endLevititeFieldsUpperChance.get().floatValue())
+                    CriterionBuilder.ratio(RatioTargets.CENTER, (float)ELFieldsLowerChance, (float)ELFieldsUpperChance)
             );
             BiomePlacement.addSubEnd(
                     Biomes.THE_END,
                     LevMod.END_LEVITITE_FIELDS,
-                    CriterionBuilder.ratio(RatioTargets.EDGE, Config.INSTANCE.endLevititeFieldsLowerChance.get().floatValue(), Config.INSTANCE.endLevititeFieldsUpperChance.get().floatValue())
+                    CriterionBuilder.ratio(RatioTargets.EDGE, (float)ELFieldsLowerChance, (float)ELFieldsUpperChance)
             );
         }
 
@@ -116,7 +138,6 @@ public class LevMod {
                             Climate.Parameter.span(-1.0f, 1.0f),
                             0L
                     ));
-
             SurfaceRules.RuleSource stoneRule = SurfaceRules.ifTrue(
                     SurfaceRules.isBiome(LEVITITE_FIELDS),
                     SurfaceRules.ifTrue(
