@@ -33,12 +33,12 @@ public class Config {
                 .define("generateLevititeFields", true);
 
         levititeFieldsLowerChance = builder
-                .comment("How common should the Levitite Fields biome generate\nLower value: ")
+                .comment("How common should the Levitite Fields biome generate, do not put the lower value higher than the upper value\nLower value: ")
                 .defineInRange("levititeFieldsLowerChance", 0.1f, 0.0, 1.0);
 
         levititeFieldsUpperChance = builder
                 .comment("Upper Value: ")
-                .defineInRange("levititeFieldsUpperChance", 0.5f, levititeFieldsLowerChance.get(), 1.0f);
+                .defineInRange("levititeFieldsUpperChance", 0.5f, 0.0, 1.0f);
 
 
         generateEndLevititeFields = builder
@@ -46,12 +46,12 @@ public class Config {
                 .define("generateEndLevititeFields", true);
 
         endLevititeFieldsLowerChance = builder
-                .comment("How common should the End Levitite Fields biome generate\nLower value: ")
+                .comment("How common should the End Levitite Fields biome generate, do not put the lower value higher than the upper value\nLower value: ")
                 .defineInRange("endLevititeFieldsLowerChance", 0.2f, 0.0, 1.0);
 
         endLevititeFieldsUpperChance = builder
                 .comment("Upper Value: ")
-                .defineInRange("endLevititeFieldsUpperChance", 0.75f, endLevititeFieldsLowerChance.get(), 1.0f);
+                .defineInRange("endLevititeFieldsUpperChance", 0.75f, 0.0, 1.0f);
 
 
         generatePaintedLevititeFields = builder
@@ -59,11 +59,11 @@ public class Config {
                 .define("generatePaintedLevititeFields", true);
 
         paintedLevititeFieldsLowerChance = builder
-                .comment("How common should the Painted Levitite Fields biome generate\nLower value: ")
+                .comment("How common should the Painted Levitite Fields biome generate, do not put the lower value higher than the upper value\nLower value: ")
                 .defineInRange("paintedLevititeFieldsLowerChance", 0.2f, 0.0 , 1.0);
 
         paintedLevititeFieldsUpperChance = builder
                 .comment("Upper Value: ")
-                .defineInRange("paintedLevititeFieldsUpperChance", 0.5f, paintedLevititeFieldsLowerChance.get(), 1.0f);
+                .defineInRange("paintedLevititeFieldsUpperChance", 0.5f, 0.0, 1.0f);
     }
 }
