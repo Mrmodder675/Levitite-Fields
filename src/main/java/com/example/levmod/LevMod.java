@@ -88,7 +88,7 @@ public class LevMod {
             BiomePlacement.addSubOverworld(
                     Biomes.BADLANDS,
                     LevMod.PAINTED_LEVITITE_FIELDS,
-                    CriterionBuilder.ratio(RatioTargets.CENTER, 0.2f, 0.5f)
+                    CriterionBuilder.ratio(RatioTargets.CENTER, Config.INSTANCE.paintedLevititeFieldsLowerChance.get().floatValue(), Config.INSTANCE.paintedLevititeFieldsUpperChance.get().floatValue())
             );
         }
 
@@ -96,12 +96,12 @@ public class LevMod {
             BiomePlacement.addSubEnd(
                     Biomes.SMALL_END_ISLANDS,
                     LevMod.END_LEVITITE_FIELDS,
-                    CriterionBuilder.ratio(RatioTargets.CENTER, 0.2f, 0.75f)
+                    CriterionBuilder.ratio(RatioTargets.CENTER, Config.INSTANCE.endLevititeFieldsLowerChance.get().floatValue(), Config.INSTANCE.endLevititeFieldsUpperChance.get().floatValue())
             );
             BiomePlacement.addSubEnd(
                     Biomes.THE_END,
                     LevMod.END_LEVITITE_FIELDS,
-                    CriterionBuilder.ratio(RatioTargets.EDGE, 0.1f, 0.5f)
+                    CriterionBuilder.ratio(RatioTargets.EDGE, Config.INSTANCE.endLevititeFieldsLowerChance.get().floatValue(), Config.INSTANCE.endLevititeFieldsUpperChance.get().floatValue())
             );
         }
 
