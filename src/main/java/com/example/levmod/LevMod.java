@@ -14,6 +14,7 @@ import com.example.levmod.registry.ModBlockEntities;
 import com.example.levmod.registry.ModBlocks;
 import com.example.levmod.registry.ModFeatures;
 import com.mrmodder.yetanothermodlibrary.api.PackFinderHelper;
+import com.mrmodder.yetanothermodlibrary.api.world.YetamlWorldUtils;
 import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import com.terraformersmc.biolith.api.biome.sub.CriterionBuilder;
 import com.terraformersmc.biolith.api.biome.sub.RatioTargets;
@@ -73,7 +74,8 @@ public class LevMod {
     @SubscribeEvent
     public static void onAddPackFinders(AddPackFindersEvent event)
     {
-        PackFinderHelper.addPackFinderIfModLoaded(event, "aeronautics_dyeable_components", MOD_ID,
+        PackFinderHelper.addPackFinderIfModLoaded(event, "aeronautics_dyeable_components",
+                MOD_ID,
                 "compat/dyeable_components",
                 PackType.SERVER_DATA,
                 "Levitite Fields dyeable components compat datapack",
@@ -83,27 +85,19 @@ public class LevMod {
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        double LFieldsLowerChance = Config.INSTANCE.levititeFieldsLowerChance.get();
-        double LFieldsUpperChance = Config.INSTANCE.levititeFieldsUpperChance.get();
+        
+        double LFieldsTemperatureModifier = Config.INSTANCE.levititeFieldsTemperatureModifier.get();
+        double LFieldsHumidityModifier = Config.INSTANCE.levititeFieldsHumidityModifier.get();
+        double LFieldsContinentalnessModifier = Config.INSTANCE.levititeFieldsContinetalnessModifier.get();
+        double LFieldsErosionModifier = Config.INSTANCE.levititeFieldsErosionModifier.get();
+        double LFieldsWeirdnessModifier = Config.INSTANCE.levititeFieldsWeirdnessModifier.get();
+        
         double ELFieldsLowerChance = Config.INSTANCE.endLevititeFieldsLowerChance.get();
         double ELFieldsUpperChance = Config.INSTANCE.endLevititeFieldsUpperChance.get();
+        
         double PLFieldsLowerChance = Config.INSTANCE.paintedLevititeFieldsLowerChance.get();
         double PLFieldsUpperChance = Config.INSTANCE.paintedLevititeFieldsUpperChance.get();
-        try {
-            if (LFieldsLowerChance > LFieldsUpperChance)
-                throw new RuntimeException("Levitite Fields configured lower chance is higher than its upper chance, resetting to defaults");
-            if (ELFieldsLowerChance > ELFieldsUpperChance)
-                throw new RuntimeException("End Levitite Fields configured lower chance is higher than its upper chance, resetting to defaults");
-            if (PLFieldsLowerChance > PLFieldsUpperChance)
-                throw new RuntimeException("Painted Levitite Fields configured lower chance is higher than its upper chance, resetting to defaults");
-        } catch (RuntimeException e) {
-            LFieldsLowerChance = Config.INSTANCE.levititeFieldsLowerChance.getRaw();
-            LFieldsUpperChance = Config.INSTANCE.levititeFieldsUpperChance.getRaw();
-            ELFieldsLowerChance = Config.INSTANCE.endLevititeFieldsLowerChance.getRaw();
-            ELFieldsUpperChance = Config.INSTANCE.endLevititeFieldsUpperChance.getRaw();
-            PLFieldsLowerChance = Config.INSTANCE.paintedLevititeFieldsLowerChance.getRaw();
-            PLFieldsUpperChance = Config.INSTANCE.paintedLevititeFieldsUpperChance.getRaw();
-        }
+
 
         if (Config.INSTANCE.generatePaintedLevititeFields.get() && ModList.get().isLoaded("aeronautics_dyeable_components"))
         {
@@ -130,12 +124,12 @@ public class LevMod {
         if (Config.INSTANCE.generateLevititeFields.get()) {
             BiomePlacement.addOverworld(LEVITITE_FIELDS,
                     new Climate.ParameterPoint(
-                            Climate.Parameter.span(-0.15f, 0.25f),
-                            Climate.Parameter.span(-0.2f, -0.05f),
-                            Climate.Parameter.span(-0.5f, 1.0f),
-                            Climate.Parameter.span(-0.4f, 0.4f),
-                            Climate.Parameter.point(0.0f),
-                            Climate.Parameter.span(-1.0f, 1.0f),
+                            YetamlWorldUtils.scaledSpan(0.05f,-0.15f, 0.25f, (float)LFieldsTemperatureModifier), //Temperature
+                            YetamlWorldUtils.scaledSpan(-0.125f,-0.2f, -0.05f,(float)LFieldsHumidityModifier), //Humidity
+                            YetamlWorldUtils.scaledSpan(0.25f,-0.5f, 1.0f, (float)LFieldsContinentalnessModifier), //Continentalness
+                            YetamlWorldUtils.scaledSpan(0.0f,-0.4f, 0.4f, (float)LFieldsErosionModifier), //Erosion
+                            Climate.Parameter.point(0.0f), //Depth
+                            YetamlWorldUtils.scaledSpan(0.0f,-1.0f, 1.0f, (float)LFieldsWeirdnessModifier), //Weirdness
                             0L
                     ));
             SurfaceRules.RuleSource stoneRule = SurfaceRules.ifTrue(
