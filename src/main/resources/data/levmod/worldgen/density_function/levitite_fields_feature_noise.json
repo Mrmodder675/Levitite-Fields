@@ -1,0 +1,39 @@
+//[df-editor]:{"pos":[1371,303],"collapsed":true}
+{
+  //[df-editor]:{"pos":[1126,282],"collapsed":false}
+  "type": "cache_once",
+  "argument": {
+    //[df-editor]:{"pos":[854,285],"collapsed":false}
+    "type": "shifted_noise",
+    "noise": "minecraft:patch",
+    "xz_scale": 0.6000000000000001,
+    "y_scale": 1,
+    "shift_x": {
+      //[df-editor]:{"pos":[261,53],"collapsed":false}
+      "type": "noise",
+      "noise": "minecraft:spaghetti_3d_2",
+      "xz_scale": 0.9999999999999999,
+      "y_scale": 0.7
+    },
+    "shift_y": {
+      //[df-editor]:{"pos":[521,296],"collapsed":false}
+      "type": "mul",
+      "argument1": {
+        //[df-editor]:{"pos":[246,241],"collapsed":false}
+        "type": "noise",
+        "noise": "minecraft:spaghetti_3d_2",
+        "xz_scale": 0.9999999999999999,
+        "y_scale": 0.9999999999999999
+      },
+      "argument2": {
+        //[df-editor]:{"pos":[215,425],"collapsed":false}
+        "type": "y_clamped_gradient",
+        "from_y": 2.7755575615628914e-17,
+        "to_y": 100,
+        "from_value": 0,
+        "to_value": 10
+      }
+    },
+    "shift_z": 0 //[df-editor]:{"pos":[561,468],"collapsed":false}
+  }
+}

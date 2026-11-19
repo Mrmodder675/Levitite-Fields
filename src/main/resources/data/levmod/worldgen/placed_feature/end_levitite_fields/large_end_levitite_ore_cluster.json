@@ -46,16 +46,6 @@
   "predicates": [
     { "type": "minecraft:matching_blocks", "blocks": [ "minecraft:air", "aeronautics:levitite" ], "offset": [ 0, 0, 0 ] }
     ,
-    { "type": "minecraft:matching_blocks", "blocks": [ "minecraft:air", "aeronautics:levitite" ], "offset": [ -0, 0, 0 ] }
-    ,
-    { "type": "minecraft:matching_blocks", "blocks": [ "minecraft:air", "aeronautics:levitite" ], "offset": [ 0, 0, 0 ] }
-    ,
-    { "type": "minecraft:matching_blocks", "blocks": [ "minecraft:air", "aeronautics:levitite" ], "offset": [ 0, -0, 0 ] }
-    ,
-    { "type": "minecraft:matching_blocks", "blocks": [ "minecraft:air", "aeronautics:levitite" ], "offset": [ 0, 0, 0 ] }
-    ,
-    { "type": "minecraft:matching_blocks", "blocks": [ "minecraft:air", "aeronautics:levitite" ], "offset": [ 0, 0, -0 ] }
-    ,
     { "type": "minecraft:matching_blocks", "blocks": [ "minecraft:air", "aeronautics:levitite" ], "offset": [ 1, 0, 0 ] }
     ,
     { "type": "minecraft:matching_blocks", "blocks": [ "minecraft:air", "aeronautics:levitite" ], "offset": [ -1, 0, 0 ] }

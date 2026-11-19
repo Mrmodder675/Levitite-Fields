@@ -1,4 +1,4 @@
-package com.example.levmod.worldgen.feature.config;
+package com.example.levmod.config.worldgen.feature.config;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

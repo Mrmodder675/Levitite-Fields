@@ -10,10 +10,13 @@ package com.example.levmod;
 // Layer4 = 256 - 310
 
 
+import com.example.levmod.config.data.Config;
+import com.example.levmod.config.data.LevmodJavaVariables;
 import com.example.levmod.registry.ModBlockEntities;
 import com.example.levmod.registry.ModBlocks;
 import com.example.levmod.registry.ModFeatures;
 import com.mrmodder.yetanothermodlibrary.api.PackFinderHelper;
+import com.mrmodder.yetanothermodlibrary.api.json.JsonConfigDefiner;
 import com.mrmodder.yetanothermodlibrary.api.world.YetamlWorldUtils;
 import com.terraformersmc.biolith.api.biome.BiomePlacement;
 import com.terraformersmc.biolith.api.biome.sub.CriterionBuilder;
@@ -69,6 +72,18 @@ public class LevMod {
         ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
 
         modEventBus.addListener(this::commonSetup);
+
+        JsonConfigDefiner JsonConfigDefiner = new JsonConfigDefiner();
+        JsonConfigDefiner.forMod(MOD_ID)
+                .newVariable("sparse_levitite_cluster_noise_value_upper", () -> LevmodJavaVariables.sparseLeviteClusterNoiseValueUpper)
+                .newVariable("sparse_levitite_cluster_noise_value_lower", () -> LevmodJavaVariables.sparseLeviteClusterNoiseValueLower)
+                .newVariable("small_levitite_cluster_noise_value_upper", () -> LevmodJavaVariables.smallLeviteClusterNoiseValueUpper)
+                .newVariable("small_levitite_cluster_noise_value_lower", () -> LevmodJavaVariables.smallLeviteClusterNoiseValueLower)
+                .newVariable("medium_levitite_cluster_noise_value_upper", () -> LevmodJavaVariables.mediumLeviteClusterNoiseValueUpper)
+                .newVariable("medium_levitite_cluster_noise_value_lower", () -> LevmodJavaVariables.mediumLeviteClusterNoiseValueLower)
+                .newVariable("large_levitite_cluster_noise_value_upper",  () -> LevmodJavaVariables.largeLeviteClusterNoiseValueUpper)
+                .newVariable("large_levitite_cluster_noise_value_lower", () -> LevmodJavaVariables.largeLeviteClusterNoiseValueLower)
+                .build();
     }
 
     @SubscribeEvent

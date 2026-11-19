@@ -1,4 +1,4 @@
-package com.example.levmod;
+package com.example.levmod.config.data;
 
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;

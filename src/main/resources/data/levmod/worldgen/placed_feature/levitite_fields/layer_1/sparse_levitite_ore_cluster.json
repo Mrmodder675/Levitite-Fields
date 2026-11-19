@@ -2,10 +2,8 @@
   "feature": "levmod:levitite_fields/layer_1/sparse_levitite_ore_cluster",
   "placement": [
     {
-      "type": "minecraft:noise_based_count",
-      "noise_to_count_ratio": 1,
-      "noise_factor": 15,
-      "noise_offset": 2
+      "type": "count",
+      "count": 15
     },
     {
       "type": "minecraft:in_square"
@@ -18,7 +16,7 @@
           "absolute": 86
         },
         "max_inclusive": {
-          "absolute": 136
+          "absolute": 310
         }
       }
     },
@@ -40,21 +38,20 @@
       }
     },
     {
+      "type": "yetaml:density_threshold",
+      "density_function": "levmod:levitite_fields_feature_noise",
+      "min_threshold": "$levmod:sparse_levitite_cluster_noise_value_lower",
+      "max_threshold": "$levmod:sparse_levitite_cluster_noise_value_upper"
+    },
+    {
+      "type": "minecraft:biome"
+    },
+    {
   "type": "minecraft:block_predicate_filter",
   "predicate": {
   "type": "minecraft:all_of",
   "predicates": [
     { "type": "minecraft:matching_blocks", "blocks": [ "minecraft:air", "aeronautics:levitite" ], "offset": [ 0, 0, 0 ] }
-    ,
-    { "type": "minecraft:matching_blocks", "blocks": [ "minecraft:air", "aeronautics:levitite" ], "offset": [ -0, 0, 0 ] }
-    ,
-    { "type": "minecraft:matching_blocks", "blocks": [ "minecraft:air", "aeronautics:levitite" ], "offset": [ 0, 0, 0 ] }
-    ,
-    { "type": "minecraft:matching_blocks", "blocks": [ "minecraft:air", "aeronautics:levitite" ], "offset": [ 0, -0, 0 ] }
-    ,
-    { "type": "minecraft:matching_blocks", "blocks": [ "minecraft:air", "aeronautics:levitite" ], "offset": [ 0, 0, 0 ] }
-    ,
-    { "type": "minecraft:matching_blocks", "blocks": [ "minecraft:air", "aeronautics:levitite" ], "offset": [ 0, 0, -0 ] }
     ,
     { "type": "minecraft:matching_blocks", "blocks": [ "minecraft:air", "aeronautics:levitite" ], "offset": [ 1, 0, 0 ] }
     ,
@@ -178,10 +175,6 @@
   ]
 }
 
-},
-
-    {
-      "type": "minecraft:biome"
-    }
+}
   ]
 }

@@ -43,3 +43,11 @@ type         = "required"
 versionRange = "[3.0.11,)"
 ordering     = "NONE"
 side         = "BOTH"
+
+# 0.4.2 seeds the noise in yetaml:density_threshold; older versions read 0 and only sparse clusters would generate.
+[[dependencies.levmod]]
+modId        = "yetaml"
+type         = "required"
+versionRange = "[0.4.2,)"
+ordering     = "NONE"
+side         = "BOTH"

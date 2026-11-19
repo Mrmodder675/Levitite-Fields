@@ -1,13 +1,12 @@
 package com.example.levmod.registry;
 
 import com.example.levmod.LevMod;
-import com.example.levmod.worldgen.feature.LevititeClusterFeature;
-import com.example.levmod.worldgen.feature.LevititeOreClusterFeature;
-import com.example.levmod.worldgen.feature.config.LevititeClusterConfig;
-import com.example.levmod.worldgen.feature.config.LevititeOreClusterConfig;
+import com.example.levmod.config.worldgen.feature.LevititeClusterFeature;
+import com.example.levmod.config.worldgen.feature.LevititeOreClusterFeature;
+import com.example.levmod.config.worldgen.feature.config.LevititeClusterConfig;
+import com.example.levmod.config.worldgen.feature.config.LevititeOreClusterConfig;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 

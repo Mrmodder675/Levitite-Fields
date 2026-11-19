@@ -1,9 +1,10 @@
-package com.example.levmod.worldgen.feature;
+package com.example.levmod.config.worldgen.feature;
 
 import com.example.levmod.blockentity.LevititeSpawnerBlockEntity;
 import com.example.levmod.registry.ModBlocks;
-import com.example.levmod.worldgen.feature.config.LevititeOreClusterConfig;
+import com.example.levmod.config.worldgen.feature.config.LevititeOreClusterConfig;
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
@@ -42,6 +43,8 @@ public class LevititeOreClusterFeature extends Feature<LevititeOreClusterConfig>
         double y2 = pos.getY() + random.nextInt(3) - 1;
 
         boolean placed = false;
+        BlockPos.MutableBlockPos candidate = new BlockPos.MutableBlockPos();
+        LongOpenHashSet visited = new LongOpenHashSet();
 
         for (int i = 0; i < size; i++) {
             float t = (float) i / size;
@@ -71,8 +74,10 @@ public class LevititeOreClusterFeature extends Feature<LevititeOreClusterConfig>
                     for (int bz = minZ; bz <= maxZ; bz++) {
                         double nz = (bz + 0.5 - cz) / r;
                         if (nx * nx + ny * ny + nz * nz >= 1.0) continue;
+                        // Consecutive spheres along the capsule overlap heavily; place each block once.
+                        if (!visited.add(BlockPos.asLong(bx, by, bz))) continue;
 
-                        BlockPos candidate = new BlockPos(bx, by, bz).immutable();
+                        candidate.set(bx, by, bz);
 
                         if (!level.ensureCanWrite(candidate)) continue;
 

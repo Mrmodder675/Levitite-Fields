@@ -1,8 +1,8 @@
-package com.example.levmod.worldgen.feature;
+package com.example.levmod.config.worldgen.feature;
 
 import com.example.levmod.blockentity.LevititeSpawnerBlockEntity;
 import com.example.levmod.registry.ModBlocks;
-import com.example.levmod.worldgen.feature.config.LevititeClusterConfig;
+import com.example.levmod.config.worldgen.feature.config.LevititeClusterConfig;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -31,6 +31,7 @@ public class LevititeClusterFeature extends Feature<LevititeClusterConfig> {
         int radiusSq = radius * radius;
 
         boolean placed = false;
+        BlockPos.MutableBlockPos candidate = new BlockPos.MutableBlockPos();
 
         for (int dx = -radius; dx <= radius; dx++) {
             for (int dy = -radius; dy <= radius; dy++) {
@@ -39,7 +40,7 @@ public class LevititeClusterFeature extends Feature<LevititeClusterConfig> {
                     // Skip origin — spawner goes there
                     if (dx == 0 && dy == 0 && dz == 0) continue;
 
-                    BlockPos candidate = center.offset(dx, dy, dz).immutable();
+                    candidate.setWithOffset(center, dx, dy, dz);
 
                     if (!level.ensureCanWrite(candidate)) continue;
 
