@@ -26,3 +26,4 @@ run
 /runs/client/downloads/log.json
 runs
 /apikeys.env
+/CLAUDE/
